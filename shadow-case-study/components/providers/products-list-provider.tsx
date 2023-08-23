@@ -35,7 +35,6 @@ const ProductsListProvider = () => {
           product.displayName?.toLowerCase().includes(searchValue.toLowerCase())
       )
     )
-    console.log(productsList)
   }, [productsList, searchValue])
 
   if(isError){
