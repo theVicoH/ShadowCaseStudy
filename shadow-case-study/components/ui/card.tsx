@@ -5,7 +5,7 @@ interface CardProps {
 }
 
 const Card : React.FC<CardProps>= ({ product }) => {
-    const roundedRating = product?.rating ? Number(product.rating).toFixed(1) : '';
+    const roundedRating = product?.rating ? Number(product.rating).toFixed(1) : ''
 
   return (
     <>

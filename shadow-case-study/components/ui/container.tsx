@@ -1,6 +1,6 @@
 interface ContainerProperties {
     children: React.ReactNode
-    className: string
+    className?: string
 }
 
 const Container: React.FC<ContainerProperties> = ( { children, className } ) => {
