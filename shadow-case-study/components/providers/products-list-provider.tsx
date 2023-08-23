@@ -13,7 +13,7 @@ const ProductsListProvider = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
 
 
-  const { isError } = useQuery({
+  const { isLoading, isError } = useQuery({
     queryKey: ['list'],
     queryFn: async () => {
       const response = await axios.get('/api/product/list')
@@ -46,7 +46,8 @@ const ProductsListProvider = () => {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />
-      <ul className="space-y-6">
+      {isLoading===true ? "Loading" : (
+        <ul className="space-y-6">
           {filteredProducts.map((product, index) => (
               <li key={index} className="bg-red-200">
                   <Link href={`/product/${product.productId}`}>
@@ -54,8 +55,13 @@ const ProductsListProvider = () => {
                       {product?.displayName}
                   </Link>
               </li>
-          ))}
-      </ul>
+            ))}
+        </ul>
+      )}
+      
+      {
+        (isLoading===false && filteredProducts.length===0) ?? "No product"
+      }
     </>
   )
 }
