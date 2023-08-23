@@ -9,7 +9,7 @@ import { useQuery } from 'react-query'
 const ProductsListProvider = () => {
     const [productsList, setProductsList] = useState<Product[]>([])
     const { data } = useQuery({
-      queryKey: ['data'],
+      queryKey: ['list'],
       queryFn: async () => {
         const response = await axios.get('/api/product/list')
         return response.data

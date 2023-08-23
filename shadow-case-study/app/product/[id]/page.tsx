@@ -1,3 +1,5 @@
+import ProductDetailsProvider from "@/components/providers/product-details-provider"
+
 interface ProductParams {
     params: {
       id: string
@@ -6,7 +8,7 @@ interface ProductParams {
 
 const Page : React.FC<ProductParams> = ({ params }) => {
     return(
-        <p>Test</p>
+        <ProductDetailsProvider productId={params.id}></ProductDetailsProvider>
     )
 }
 

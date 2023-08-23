@@ -2,23 +2,30 @@
 
 import { Product } from "@/types"
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 
 
-const ProductDetailsProvider = () => {
+const ProductDetailsProvider = ({productId} : {productId : string}) => {
     const [productDetails, setProductDetails] = useState<Product>()
     
     const { data } = useQuery({
-        queryKey: ['data'],
+        queryKey: ['details'],
         queryFn: async () => {
-          const response = await axios.get('/api/product/list')
+          const response = await axios.get('/api/product/details',{
+            params:{
+                productId: productId
+            }
+          })
           return response.data
         },
         onSuccess: (data) => {
             setProductDetails(data)
         }
       })
+      useEffect(()=>{
+        console.log(productDetails)
+      }, [productDetails])
     return (
         <>
         
