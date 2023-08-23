@@ -26,7 +26,9 @@ const ProductsListProvider = () => {
         <ul className="space-y-6">
             {productsList.map((product, index) => (
                 <li key={index} className="bg-red-200">
-                    {product?.brandName}
+                    <Link href={`/product/${product.productId}`}>
+                        {product?.brandName}
+                    </Link>
                 </li>
             ))}
         </ul>
