@@ -1,5 +1,5 @@
 import { Product } from "@/types"
-
+import { AiFillStar } from "react-icons/ai"
 interface CardProps {
     product: Product;
 }
@@ -13,14 +13,20 @@ const Card : React.FC<CardProps>= ({ product }) => {
         className='w-full'
         alt={`Picture of ${product?.displayName}`}
         />
-        <div className="flex flex-col m-4 bg-red-500">
-            <span className="text-lg font-semibold">{product?.displayName}</span>
-            <span className="">{product?.brandName}</span>
-            <span>{
+        <div className="flex flex-col m-6 space-y-3">
+            <div className="flex flex-col space-y-1">
+                <span className="display-name overflow-hidden whitespace-nowrap overflow-ellipsis font-semibold text-lg">{product?.displayName}</span>
+                <span className="display-name overflow-hidden whitespace-nowrap overflow-ellipsis text-md text-neutral-500">{product?.brandName}</span>
+            </div>
+           
+            <span className="font-semibold text-md">{
             product!.currentSku?.listPrice !== undefined && product!.currentSku?.listPrice !== ""
             ? product!.currentSku?.listPrice : "-- --"}
             </span>
-            {product?.rating}
+            <div className="flex items-center space-x-2">
+                <span className="">{product?.rating}</span>
+                <AiFillStar/>
+            </div>
         </div>
         
     </>
