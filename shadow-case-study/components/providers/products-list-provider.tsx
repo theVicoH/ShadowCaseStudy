@@ -1,12 +1,13 @@
 'use client'
 
+import { Product } from '@/types'
 import axios from 'axios'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 
 const ProductsListProvider = () => {
-    const [productsList, setProductsList] = useState([])
+    const [productsList, setProductsList] = useState<Product[]>([])
     const { data } = useQuery({
       queryKey: ['data'],
       queryFn: async () => {
@@ -25,7 +26,7 @@ const ProductsListProvider = () => {
         <ul className="space-y-6">
             {productsList.map((product, index) => (
                 <li key={index} className="bg-red-200">
-                    {product.brandName}
+                    {product?.brandName}
                 </li>
             ))}
         </ul>
