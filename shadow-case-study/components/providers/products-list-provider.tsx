@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 import { Input } from '../ui/input'
+import Image from 'next/image'
+import Card from '../ui/card'
 
 const ProductsListProvider = () => {
   const [productsList, setProductsList] = useState<Product[]>([])
@@ -49,10 +51,9 @@ const ProductsListProvider = () => {
       {isLoading===true ? "Loading" : (
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProducts.map((product, index) => (
-              <li key={index} className="bg-red-200">
+              <li key={index}>
                   <Link href={`/product/${product.productId}`}>
-                      {product?.brandName}
-                      {product?.displayName}
+                      <Card product={product}/>
                   </Link>
               </li>
             ))}

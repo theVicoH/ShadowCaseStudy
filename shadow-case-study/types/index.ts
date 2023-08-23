@@ -1,7 +1,7 @@
 export interface Product {
     brandName?: string;
     displayName?: string;
-    heroImage?: string;
+    image450?: string;
     currentSku?: {
         listPrice?: string;
     };

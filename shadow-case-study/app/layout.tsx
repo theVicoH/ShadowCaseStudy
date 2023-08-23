@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <ReactQueryProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`bg-background ${inter.className}`}>
         <Container>
           {children}
         </Container>
