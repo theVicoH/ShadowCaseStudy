@@ -22,13 +22,13 @@ const ProductsListProvider = () => {
     }, [productsList])
   return (
     <>
-        {/* <ul className="space-y-6">
+        <ul className="space-y-6">
             {productsList.map((product, index) => (
                 <li key={index} className="bg-red-200">
-                    {product.brand}
+                    {product.brandName}
                 </li>
             ))}
-        </ul> */}
+        </ul>
     </>
   )
 }
