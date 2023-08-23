@@ -18,7 +18,7 @@ export const GET = async (request: Request) => {
     try {
         const response = await axios.request(options);
         return NextResponse.json(
-            response.data,
+            response.data.products,
             { status: 200 }
         )
     } catch (error) {

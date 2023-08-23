@@ -1,6 +1,7 @@
 'use client'
 
 import axios from 'axios'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 
@@ -9,7 +10,7 @@ const ProductsListProvider = () => {
     const { data } = useQuery({
       queryKey: ['data'],
       queryFn: async () => {
-        const response = await axios.get('/api/products/list')
+        const response = await axios.get('/api/product/list')
         return response.data
       },
       onSuccess: (data) => {
@@ -20,9 +21,15 @@ const ProductsListProvider = () => {
       console.log(productsList)
     }, [productsList])
   return (
-    <div>
-      HEY
-    </div>
+    <>
+        {/* <ul className="space-y-6">
+            {productsList.map((product, index) => (
+                <li key={index} className="bg-red-200">
+                    {product.brand}
+                </li>
+            ))}
+        </ul> */}
+    </>
   )
 }
 
