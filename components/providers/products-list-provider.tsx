@@ -63,7 +63,7 @@ const ProductsListProvider = () => {
           <ul className="grid grid-cols-1 gap-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product, index) => (
                 <li key={index}>
-                    <Link href={`/product/[id]?slug=${product.productId}`}>
+                    <Link href={`/product/${product.productId}`}>
                         <Card product={product}/>
                     </Link>
                 </li>
