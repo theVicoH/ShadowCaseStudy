@@ -6,8 +6,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 import { Input } from '../ui/input'
-import Image from 'next/image'
 import Card from '../ui/card'
+import Container from '../ui/container'
+
 
 const ProductsListProvider = () => {
   const [productsList, setProductsList] = useState<Product[]>([])
@@ -43,26 +44,38 @@ const ProductsListProvider = () => {
   }
   return (
     <>
-      <Input
-        placeholder="Search"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-      />
-      {isLoading===true ? "Loading" : (
-        <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProducts.map((product, index) => (
-              <li key={index}>
-                  <Link href={`/product/${product.productId}`}>
-                      <Card product={product}/>
-                  </Link>
-              </li>
-            ))}
-        </ul>
-      )}
-      
-      {
-        (isLoading===false && filteredProducts.length===0) ?? "No product"
-      }
+      <div className='border-b pb-6 pt-20'>
+        <Container>
+          <div className=' flex flex-col space-y-2 md:grid md:grid-cols-8'>
+            <h2 className="col-span-6 croll-m-20 pb-2 text-3xl font-semibold tracking-tight t">Sephora</h2>
+            <Input
+              placeholder="Search"
+              value={searchValue}
+              className='col-span-2'
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
+
+        </Container>
+      </div>
+      <Container>
+        {isLoading===true ? "Loading" : (
+          <ul className="grid grid-cols-1 gap-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProducts.map((product, index) => (
+                <li key={index}>
+                    <Link href={`/product/${product.productId}`}>
+                        <Card product={product}/>
+                    </Link>
+                </li>
+              ))}
+          </ul>
+        )}
+        
+        {
+          (isLoading===false && filteredProducts.length===0) ?? "No product"
+        }
+      </Container>
+
     </>
   )
 }
