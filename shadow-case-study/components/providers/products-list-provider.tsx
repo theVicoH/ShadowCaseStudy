@@ -49,7 +49,7 @@ const ProductsListProvider = () => {
         onChange={(e) => setSearchValue(e.target.value)}
       />
       {isLoading===true ? "Loading" : (
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProducts.map((product, index) => (
               <li key={index}>
                   <Link href={`/product/${product.productId}`}>

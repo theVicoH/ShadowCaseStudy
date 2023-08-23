@@ -19,15 +19,17 @@ const Card : React.FC<CardProps>= ({ product }) => {
                 <span className="display-name overflow-hidden whitespace-nowrap overflow-ellipsis font-semibold text-lg">{product?.displayName}</span>
                 <span className="display-name overflow-hidden whitespace-nowrap overflow-ellipsis text-md text-neutral-500">{product?.brandName}</span>
             </div>
-           
-            <span className="font-semibold text-md">{
-            product!.currentSku?.listPrice !== undefined && product!.currentSku?.listPrice !== ""
-            ? product!.currentSku?.listPrice : "-- --"}
-            </span>
-            <div className="flex items-center space-x-2">
-                <span className="">{product?.rating}</span>
-                <AiFillStar/>
+            <div className="flex justify-between">
+                <span className="font-semibold text-md">{
+                product!.currentSku?.listPrice !== undefined && product!.currentSku?.listPrice !== ""
+                ? product!.currentSku?.listPrice : "-- --"}
+                </span>
+                <div className="flex items-center space-x-2">
+                    <span className="">{roundedRating}</span>
+                    <AiFillStar/>
+                </div>
             </div>
+
         </div>
         
     </>
