@@ -30,9 +30,9 @@ const ProductDetailsProvider = ({productId} : {productId : string}) => {
             setProductDetails(data)
         }
       })
-      useEffect(()=>{
-        console.log(productDetails)
-      }, [productDetails])
+      // useEffect(()=>{
+      //   console.log(productDetails)
+      // }, [productDetails])
     return (
         <div className="w-screen h-screen">
           <Container className="w-full h-full">
