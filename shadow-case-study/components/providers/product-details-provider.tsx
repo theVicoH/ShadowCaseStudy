@@ -1,13 +1,15 @@
 'use client'
 
-import { Product } from "@/types"
+import { ProductDetails } from "@/types"
 import axios from "axios"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
+import { Button } from "../ui/button"
 
 
 const ProductDetailsProvider = ({productId} : {productId : string}) => {
-    const [productDetails, setProductDetails] = useState<Product>()
+    const [productDetails, setProductDetails] = useState<ProductDetails>()
     
     const { data } = useQuery({
         queryKey: ['details'],
@@ -28,7 +30,19 @@ const ProductDetailsProvider = ({productId} : {productId : string}) => {
       }, [productDetails])
     return (
         <>
-        
+          <Link href="/">
+            <Button variant="outline">Back</Button>
+          </Link>
+          <img src={productDetails?.currentSku?.skuImages?.image300} alt={productDetails?.displayName} className="w-full aspect-square" />
+          <div className="bg-red-400">
+            {productDetails?.brand?.displayName}
+            {productDetails?.displayName}
+            {productDetails?.currentSku?.listPrice}
+            {productDetails?.rating}
+            {productDetails?.quickLookDescription}
+            {productDetails?.longDescription}
+          </div>
+
         </>
     )
 }

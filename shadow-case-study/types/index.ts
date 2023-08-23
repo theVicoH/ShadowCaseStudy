@@ -10,14 +10,16 @@ export interface Product {
 }
 
 export interface ProductDetails {
-    brand?: [
+    brand?: {
         displayName?: string
-    ];
+    }
     displayName?: string;
-    heroImage?: string;
     currentSku?: {
         skuId?: string;
         listPrice?: string;
+        skuImages?: {
+            image300: string;
+        };
     };
     rating?: number;
     productId?: string;
