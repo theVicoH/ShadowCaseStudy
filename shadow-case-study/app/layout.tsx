@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import ReactQueryProvider from '@/components/providers/react-query-provider'
-import Container from '@/components/ui/container'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,10 +18,8 @@ export default function RootLayout({
   return (
     <ReactQueryProvider>
       <html lang="en">
-        <body className={inter.className}>
-        <Container>
+        <body className={`bg-background ${inter.className}`}>
           {children}
-        </Container>
         </body>
       </html>
     </ReactQueryProvider>
