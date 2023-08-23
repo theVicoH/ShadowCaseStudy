@@ -8,6 +8,7 @@ import { useQuery } from 'react-query'
 import { Input } from '../ui/input'
 import Card from '../ui/card'
 import Container from '../ui/container'
+import LoadingProductsList from '../loading/loading-products-list'
 
 
 const ProductsListProvider = () => {
@@ -59,7 +60,7 @@ const ProductsListProvider = () => {
         </Container>
       </div>
       <Container>
-        {isLoading===true ? "Loading" : (
+        {isLoading===true ? <LoadingProductsList/> : (
           <ul className="grid grid-cols-1 gap-8 mt-12 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product, index) => (
                 <li key={index}>
